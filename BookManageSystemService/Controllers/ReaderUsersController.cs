@@ -48,6 +48,17 @@ namespace BookManageSystemService.Controllers
             return Ok(readerUser);
         }
         //GET:api/ReaderUsers/
+        public string GetReaderUserLogin([FromUri] string userAccount, [FromUri] string userPassword)
+        {
+            string signal = "sucess";
+            var temp = db.ReaderUsers.Where(user => user.AccountNumber == userAccount && user.Password == userPassword);
+            if (temp == null)
+            {
+                signal = "failed";
+            }
+            return signal;
+        }
+        //GET:api/ReaderUsers/
         public IQueryable<ReaderUserDTO> GetReaderUserBySearch([FromUri] string Name, [FromUri] string AccountNumber)
         {
             if (Name == null)
