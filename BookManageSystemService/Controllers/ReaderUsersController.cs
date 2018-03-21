@@ -52,7 +52,7 @@ namespace BookManageSystemService.Controllers
         {
             string signal = "sucess";
             var temp = db.ReaderUsers.Where(user => user.AccountNumber == userAccount && user.Password == userPassword);
-            if (temp == null)
+            if (!temp.Any())
             {
                 signal = "failed";
             }

@@ -26,5 +26,7 @@ namespace BookManageSystemService.Models
         public System.Data.Entity.DbSet<BookManageSystemService.Models.Order> Orders { get; set; }
 
         public System.Data.Entity.DbSet<BookManageSystemService.Models.BusinessOrder> BusinessOrders { get; set; }
+
+        public System.Data.Entity.DbSet<BookManageSystemService.Models.ManageUser> ManageUsers { get; set; }
     }
 }

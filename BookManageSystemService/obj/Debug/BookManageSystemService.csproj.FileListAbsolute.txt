@@ -98,9 +98,9 @@ D:\BookManageSystem\BookManageSystemService\BookManageSystemService\bin\EntityFr
 D:\BookManageSystem\BookManageSystemService\BookManageSystemService\bin\EntityFramework.SqlServer.dll
 D:\BookManageSystem\BookManageSystemService\BookManageSystemService\bin\EntityFramework.xml
 D:\BookManageSystem\BookManageSystemService\BookManageSystemService\bin\EntityFramework.SqlServer.xml
-D:\BookManageSystem\BookManageSystemService\BookManageSystemService\obj\Debug\BookManageSystemService.csprojResolveAssemblyReference.cache
 D:\BookManageSystem\BookManageSystemService\BookManageSystemService\bin\System.Web.Cors.dll
 D:\BookManageSystem\BookManageSystemService\BookManageSystemService\bin\System.Web.Http.Cors.dll
 D:\BookManageSystem\BookManageSystemService\BookManageSystemService\bin\System.Web.Http.Cors.xml
 D:\BookManageSystem\BookManageSystemService\BookManageSystemService\obj\Debug\BookManageSystemService.Migrations.initial.resources
 D:\BookManageSystem\BookManageSystemService\BookManageSystemService\obj\Debug\BookManageSystemService.csproj.GenerateResource.cache
+D:\BookManageSystem\BookManageSystemService\BookManageSystemService\obj\Debug\BookManageSystemService.csprojResolveAssemblyReference.cache

@@ -192,20 +192,22 @@
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\BusinessOrdersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageUsersController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ReaderUsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803151029487_initial.cs" />
-    <Compile Include="Migrations\201803151029487_initial.Designer.cs">
-      <DependentUpon>201803151029487_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201803210052410_Initial.cs" />
+    <Compile Include="Migrations\201803210052410_Initial.Designer.cs">
+      <DependentUpon>201803210052410_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookManageSystemServiceContext.cs" />
     <Compile Include="Models\BookSearchInf.cs" />
     <Compile Include="Models\BusinessOrder.cs" />
+    <Compile Include="Models\ManageUser.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\ReaderUser.cs" />
     <Compile Include="Models\ReaderUserDTO.cs" />
@@ -280,8 +282,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803151029487_initial.resx">
-      <DependentUpon>201803151029487_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803210052410_Initial.resx">
+      <DependentUpon>201803210052410_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

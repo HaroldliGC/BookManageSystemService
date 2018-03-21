@@ -42,6 +42,11 @@
                new BusinessOrder() { Id = 4, BookId = 3, ReaderUserId = 2, StartDate = startDates[3], EndDate = endDates[3], ReturnDate = returnDates[3], BusinessState = "overTime", OrderState = "finished" },
                new BusinessOrder() { Id = 5, BookId = 1, ReaderUserId = 2, StartDate = startDates[4], EndDate = endDates[4], ReturnDate = returnDates[4], BusinessState = "normal", OrderState = "finished" }
                );
+            context.ManageUsers.AddOrUpdate(x => x.Id,
+                new ManageUser() { Id = 1, AccountNumber = "admin", Password = "xA123456", Sign = "1"},
+                new ManageUser() { Id = 2, AccountNumber = "admin", Password = "xA123456", Sign = "2" },
+                new ManageUser() { Id = 3, AccountNumber = "admin", Password = "xA123456", Sign = "3" }
+                );
            context.Books.AddOrUpdate(x => x.Id,
         new Book()
         {
