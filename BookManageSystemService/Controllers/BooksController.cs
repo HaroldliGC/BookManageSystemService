@@ -101,18 +101,21 @@ namespace BookManageSystemService.Controllers
         }
 
         // POST: api/Books
-        [ResponseType(typeof(Book))]
+        [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PostBook(Book book)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            db.Books.Add(book);
-            await db.SaveChangesAsync();
-
-            return CreatedAtRoute("DefaultApi", new { id = book.Id }, book);
+            var temp = db.Books.Where(booker => booker.Isbn == book.Isbn);
+            if (!temp.Any())
+            {
+                db.Books.Add(book);
+                await db.SaveChangesAsync();
+                return CreatedAtRoute("DefaultApi", new { id = book.Id }, book);
+            }
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
         // DELETE: api/Books/5
