@@ -24,16 +24,9 @@ namespace BookManageSystemService.Controllers
         }
 
         // GET: api/BusinessOrders/5
-        [ResponseType(typeof(BusinessOrder))]
-        public async Task<IHttpActionResult> GetBusinessOrder(int id)
+        public IQueryable<BusinessOrder> GetBusinessOrder(int id)
         {
-            BusinessOrder businessOrder = await db.BusinessOrders.FindAsync(id);
-            if (businessOrder == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(businessOrder);
+            return db.BusinessOrders.Where(b => b.Id == id).Include(b => b.Book).Include(b => b.ReaderUser);
         }
         // GET:
         [ResponseType(typeof(BusinessOrder))]
@@ -50,6 +43,13 @@ namespace BookManageSystemService.Controllers
             var temp = db.BusinessOrders.Where(order => order.ReaderUser.Name.Contains(UserName)).Include(b => b.Book).Include(b => b.ReaderUser);
             var rec = temp.Where(order => order.Book.Name.Contains(BookName)).Include(b => b.Book).Include(b => b.ReaderUser);
 
+            return rec;
+        }
+        //GET
+        [ResponseType(typeof(BusinessOrder))]
+        public IQueryable<BusinessOrder> GetGetBusinessOrderByAccount([FromUri] string Account)
+        {
+            var rec = db.BusinessOrders.Where(order => order.ReaderUser.AccountNumber == Account).Include(b => b.Book);
             return rec;
         }
 
@@ -92,11 +92,16 @@ namespace BookManageSystemService.Controllers
         [ResponseType(typeof(BusinessOrder))]
         public async Task<IHttpActionResult> PostBusinessOrder(BusinessOrder businessOrder)
         {
+            Book book = await db.Books.FindAsync(businessOrder.BookId);
+            book.ResidueNumber = book.ResidueNumber - 1;
+            book.BorrowNumber = book.BorrowNumber + 1;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
+            //更新书籍信息
+            db.Entry(book).State = EntityState.Modified;
+            //插入订单数据
             db.BusinessOrders.Add(businessOrder);
             await db.SaveChangesAsync();
 
