@@ -47,9 +47,9 @@ namespace BookManageSystemService.Controllers
         }
         //GET
         [ResponseType(typeof(BusinessOrder))]
-        public IQueryable<BusinessOrder> GetGetBusinessOrderByAccount([FromUri] string Account)
+        public IQueryable<BusinessOrder> GetGetBusinessOrderByAccount([FromUri] string Account, [FromUri] string OrderState)
         {
-            var rec = db.BusinessOrders.Where(order => order.ReaderUser.AccountNumber == Account).Include(b => b.Book);
+            var rec = db.BusinessOrders.Where(order => order.ReaderUser.AccountNumber == Account && order.OrderState == OrderState).Include(b => b.Book);
             return rec;
         }
 
@@ -67,6 +67,16 @@ namespace BookManageSystemService.Controllers
                 return BadRequest();
             }
 
+            if (businessOrder.OrderState == "finished")
+            {
+                Book book = await db.Books.FindAsync(businessOrder.BookId);
+                book.ResidueNumber = book.ResidueNumber + 1;
+                book.BorrowNumber = book.BorrowNumber - 1;
+                //更新书籍信息
+                db.Entry(book).State = EntityState.Modified;
+            }
+            
+            //更新订单信息
             db.Entry(businessOrder).State = EntityState.Modified;
 
             try
